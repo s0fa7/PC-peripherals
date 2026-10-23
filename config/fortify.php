@@ -160,10 +160,11 @@ return [
     */
 
     'features' => [
-        Features::resetPasswords(),
-        Features::passkeys([
-            'confirmPassword' => false,
-        ]),
+        // Features::resetPasswords(),
+        // Features::passkeys([
+        //     'confirmPassword' => false,
+        // ]),
+        Features::registration(),
     ],
 
 ];

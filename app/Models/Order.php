@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public const UPDATE_AT = null;
+    public const UPDATED_AT = null;
 
     protected $fillable = [
-    'user_id', 'customer_name', 'email',
+    'user_id', 'customer_name', 'phone',
     'total', 'status',
     ];
     public function user(){

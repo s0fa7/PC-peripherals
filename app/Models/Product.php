@@ -23,11 +23,12 @@ class Product extends Model
         'specs' => 'array',
         'is_bestseller' => 'boolean',
     ];
+    protected $appends = ['image_url'];
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    public function images()
+    public function image()
     {
         return $this->hasOne(ProductImage::class);
     }

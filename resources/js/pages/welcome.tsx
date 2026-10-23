@@ -1,4 +1,5 @@
 import { Head, Link, usePage } from '@inertiajs/react';
+import ProductCard from '@/components/product-card';
 import { dashboard, login } from '@/routes';
 
 export default function Welcome() {
@@ -31,7 +32,16 @@ export default function Welcome() {
                 </header>
                 <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
                     <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
-                        
+                        <ProductCard
+                            title="Механическая клавиатура AULA F75"
+                            description="Механическая клавиатура геймера F75 это высококачественная клавиатура с прокладкой и пластиной ПК."
+                            properties={{
+                                Подсветка: 'RGB',
+                                Подключение: 'USB-C / Bluetooth',
+                            }}
+                            price={4500}
+                            isHit
+                        />
                     </main>
                 </div>
             </div>
