@@ -1,12 +1,14 @@
 import { Form, Head } from '@inertiajs/react';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
+import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { store } from '@/routes/login';
+import { register } from '@/routes';
 
 type Props = {
     status?: string;
@@ -27,7 +29,7 @@ export default function Login({ status }: Props) {
                     <>
                         <div className="grid gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label htmlFor="email">Email адресс</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -43,7 +45,7 @@ export default function Login({ status }: Props) {
 
                             <div className="grid gap-2">
                                 <div className="flex items-center">
-                                    <Label htmlFor="password">Password</Label>
+                                    <Label htmlFor="password">Пароль</Label>
                                 </div>
                                 <PasswordInput
                                     id="password"
@@ -51,7 +53,7 @@ export default function Login({ status }: Props) {
                                     required
                                     tabIndex={2}
                                     autoComplete="current-password"
-                                    placeholder="Password"
+                                    placeholder="Пароль"
                                 />
                                 <InputError message={errors.password} />
                             </div>
@@ -62,7 +64,7 @@ export default function Login({ status }: Props) {
                                     name="remember"
                                     tabIndex={3}
                                 />
-                                <Label htmlFor="remember">Remember me</Label>
+                                <Label htmlFor="remember">Запомнить меня</Label>
                             </div>
 
                             <Button
@@ -73,8 +75,11 @@ export default function Login({ status }: Props) {
                                 data-test="login-button"
                             >
                                 {processing && <Spinner />}
-                                Log in
+                                Войти
                             </Button>
+                            <div className="text-center text-sm text-muted-foreground">
+                                Впервые у нас? <TextLink href={register()}>Зарегистрироваться</TextLink>
+                            </div>
                         </div>
                     </>
                 )}
@@ -90,6 +95,6 @@ export default function Login({ status }: Props) {
 }
 
 Login.layout = {
-    title: 'Log in to your account',
-    description: 'Enter your email and password below to log in',
+    title: 'Войдите в свою учетную запись',
+    description: 'Введите свой адрес электронной почты и пароль ниже для входа',
 };

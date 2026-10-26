@@ -1,6 +1,6 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import ProductCard from '@/components/product-card';
-import { dashboard, login } from '@/routes';
+import { dashboard, login, register } from '@/routes';
 
 export default function Welcome() {
     const { auth } = usePage().props;
@@ -22,16 +22,22 @@ export default function Welcome() {
                             <>
                                 <Link
                                     href={login()}
-                                    className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                                    className="inline-block rounded-sm border border-transparent px-5 pt-0.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
                                 >
-                                    Log in
+                                    Войти
+                                </Link>
+                                <Link
+                                    href={register()}
+                                    className="inline-block rounded-sm border border-transparent px-5 pt-0.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                                >
+                                    Зарегистрироваться
                                 </Link>
                             </>
                         )}
                     </nav>
                 </header>
                 <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
-                    <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
+                    <main className="flex w-full max-w-[335px] flex-col gap-4 lg:max-w-4xl lg:flex-row">
                         <ProductCard
                             title="Механическая клавиатура AULA F75"
                             description="Механическая клавиатура геймера F75 это высококачественная клавиатура с прокладкой и пластиной ПК."
@@ -41,6 +47,16 @@ export default function Welcome() {
                             }}
                             price={4500}
                             isHit
+                        />
+                        <ProductCard
+                            title="Механическая клавиатура AULA F75"
+                            description="Механическая клавиатура геймера F75 это высококачественная клавиатура с прокладкой и пластиной ПК."
+                            properties={{
+                                Подсветка: 'RGB',
+                                Подключение: 'USB-C / Bluetooth',
+                            }}
+                            price={3900}
+                            oldPrice={4500}
                         />
                     </main>
                 </div>

@@ -1,5 +1,5 @@
-import { Heart, Zap } from 'lucide-react';
-import PillButton from '@/components/pill-button';
+import { ChevronsRight, Heart, Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 export type ProductCardProps = {
@@ -40,30 +40,30 @@ export default function ProductCard({
     return (
         <article
             className={cn(
-                'w-full max-w-[300px] rounded-[16px] bg-white p-1.5',
+                'flex w-full max-w-[300px] flex-col rounded-[16px] border border-white bg-white p-1.5 dark:border-neutral-800 dark:bg-black',
                 className,
             )}
         >
-            <div className="relative overflow-hidden rounded-xl bg-white">
+            <div className="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-white dark:bg-neutral-900">
                 <img
                     src={image ?? '/images/products/no-photo.png'}
                     alt={title}
-                    className="h-[150px] w-full object-cover"
+                    className="h-[150px] w-full shrink-0 object-cover"
                 />
 
                 <button
                     type="button"
                     onClick={onToggleFavorite}
                     aria-label="В избранное"
-                    className="absolute top-2 left-2 text-pink-400"
+                    className="absolute top-2 left-2 text-orange-500"
                 >
                     <Heart
-                        className={cn('size-6', isFavorite && 'fill-pink-400')}
+                        className={cn('size-6', isFavorite && 'fill-orange-500')}
                     />
                 </button>
 
                 {isHit && !isDiscounted && (
-                    <span className="absolute top-2 right-2 flex items-center gap-1 rounded-md bg-gradient-to-r from-purple-500 to-pink-400 px-2 py-1 text-sm uppercase font-medium text-white">
+                    <span className="absolute top-2 right-2 flex items-center gap-1 rounded-md bg-gradient-to-r from-red-600 to-orange-500 px-2 py-1 text-sm uppercase font-medium text-white">
                         <Zap className="size-4" />
                         хит
                     </span>
@@ -71,10 +71,10 @@ export default function ProductCard({
 
                 <div
                     className={cn(
-                        'relative -mt-4 rounded-xl px-2.5 pt-3 pb-2.5',
+                        'relative -mt-4 flex flex-1 flex-col rounded-xl px-2.5 pt-3 pb-2.5',
                         isDiscounted
-                            ? 'bg-pink-400 text-white'
-                            : 'bg-gray-200 text-black',
+                            ? 'bg-gradient-to-br from-red-600 to-orange-500 text-white'
+                            : 'bg-gray-300 text-black dark:bg-neutral-800 dark:text-white',
                     )}
                 >
                     <h3 className="text-xl leading-tight">{title}</h3>
@@ -82,7 +82,7 @@ export default function ProductCard({
                     <div
                         className={cn(
                             'mt-2 text-base leading-tight',
-                            isDiscounted ? 'text-white/90' : 'text-[#8a8a8a]',
+                            isDiscounted ? 'text-white/90' : 'text-[#8a8a8a] dark:text-neutral-400',
                         )}
                     >
                         <p className="line-clamp-3">{description}</p>
@@ -93,10 +93,10 @@ export default function ProductCard({
                         ))}
                     </div>
 
-                    <div className="mt-3 flex items-end justify-between gap-1.5">
+                    <div className="mt-auto flex items-end justify-between gap-1.5 pt-3">
                         <div className="flex flex-col">
                             {isDiscounted && (
-                                <span className="text-[6px] text-white/80 line-through">
+                                <span className="text-xs text-white/80 line-through">
                                     {formatPrice(oldPrice)}
                                 </span>
                             )}
@@ -110,12 +110,10 @@ export default function ProductCard({
                             </span>
                         </div>
 
-                        <PillButton
-                            onClick={onAddToCart}
-                            variant={isDiscounted ? 'white' : 'pink'}
-                        >
+                        <Button onClick={onAddToCart}>
                             в корзину
-                        </PillButton>
+                            <ChevronsRight className="" />
+                        </Button>
                     </div>
                 </div>
             </div>
